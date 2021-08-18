@@ -1,16 +1,16 @@
 DROP TABLE IF EXISTS people, addresses, houses;
 
 CREATE TABLE people (
-    personId SERIAL PRIMARY KEY, 
+    personid SERIAL PRIMARY KEY, 
     fullName VARCHAR(100),
-    age INT(0+),
+    age INT ,
     housemates INT
 );
 
 INSERT INTO people (fullName, age, housemates) VALUES ('Joe Bloggs', 26, 2 );
 
 CREATE TABLE addresses (
-    houseId SERIAL PRIMARY KEY,
+    houseid SERIAL PRIMARY KEY,
     postcode VARCHAR,
     streetAddress VARCHAR
 );
@@ -18,8 +18,8 @@ CREATE TABLE addresses (
 INSERT INTO addresses (postcode, streetAddress) VALUES ('AA11AA', '1 street');
 
 CREATE TABLE houses (
-    houseId INT,
+    fk_houseId INT,
     personId INT,
-    FOREIGN KEY (houseId) REFERENCES addresses(houseId),
-    FOREIGN KEY (ownerId) REFERENCES people(personId)
+    FOREIGN KEY (personId) REFERENCES people(personid),
+    FOREIGN KEY (fk_houseId) REFERENCES addresses(houseid)
 );
